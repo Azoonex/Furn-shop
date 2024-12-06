@@ -1,0 +1,26 @@
+@import './variable.scss';
+@import './mixins.scss';
+
+
+.nav_content{
+    width: 98%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    background: rgb(252, 252, 252,.5) ;
+    border-radius: 14px;
+
+    @include for-phone-only{
+        width: 100%;
+    }
+
+    li {
+        list-style: none;
+        font-size: $xl-size;
+        font-weight: bold;
+        cursor: pointer;
+        color: $dark-color;
+    }
+}
