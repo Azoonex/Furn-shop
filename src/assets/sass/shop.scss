@@ -1,0 +1,60 @@
+@import "./mixins.scss";
+@import "./variable.scss";
+
+.content {
+    width: 100%;
+
+    .container_card {
+        display: grid;
+        grid-column-gap: 15px;
+        grid-row-gap: 20px;
+
+        @include media(phone, tablet) {
+            padding-inline: 20px;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        @include media(desktop) {
+            padding-inline: 20px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 14px;
+    border: 1px solid $dark-color;
+    padding: 5px;
+
+    .img-cont {
+        width: 100%;
+        height: 300px;
+        img {
+            object-fit: cover;
+            width: max-content;
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 14px 14px 0 0;
+        }
+    }
+
+    h1 {
+        font-size: $xl-size;
+        font-weight: 400;
+    }
+    h2 {
+        font-size: $md-size;
+    }
+    .content_price_btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        h3 {
+            font-weight: bold;
+        }
+    }
+}

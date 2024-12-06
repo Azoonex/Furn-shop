@@ -9,14 +9,14 @@
     justify-content: space-around;
     align-items: center;
     height: 10vh;
-    background: rgb(252, 252, 252,.5) ;
+    background: rgb(252, 252, 252,.3) ;
     border-radius: 14px;
 
     @include for-phone-only{
         width: 100%;
     }
 
-    li {
+    a {
         list-style: none;
         font-size: $xl-size;
         font-weight: bold;

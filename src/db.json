@@ -1,0 +1,100 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Cozy Lounge Chair",
+            "price": 249.99,
+            "description": "Experience ultimate comfort in this cozy lounge chair.",
+            "image": "/images/1.jpg",
+            "bgImg": "/images/1-small.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Modern Ceramic Vase",
+            "price": 49.99,
+            "description": "Enhance your home decor with this modern ceramic vase.",
+            "image": "/images/2.jpg",
+            "bgImg": "/images/2-small.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Sleek Desk Lamp",
+            "price": 79.99,
+            "description": "Illuminate your workspace with the sleek design of this desk lamp.",
+            "image": "/images/3.jpg",
+            "bgImg": "/images/3-small.jpg"
+        },
+        {
+            "id": 4,
+            "title": "Vintage Armchair",
+            "price": 199.99,
+            "description": "Add a touch of vintage charm to your space with this cozy armchair.",
+            "image": "/images/4.jpg",
+            "bgImg": "/images/4-small.jpg"
+        },
+        {
+            "id": 5,
+            "title": "Glass Flower Vase",
+            "price": 29.99,
+            "description": "Display your favorite flowers in this elegant glass flower vase.",
+            "image": "/images/5.jpg",
+            "bgImg": "/images/5-small.jpg"
+        },
+        {
+            "id": 6,
+            "title": "Adjustable Floor Lamp",
+            "price": 149.99,
+            "description": "Customize your lighting with this adjustable and stylish floor lamp.",
+            "image": "/images/6.jpg",
+            "bgImg": "/images/6-small.jpg"
+        },
+        {
+            "id": 7,
+            "title": "Ergonomic Office Chair",
+            "price": 299.99,
+            "description": "Stay comfortable during work hours with this ergonomic office chair.",
+            "image": "/images/7.jpg",
+            "bgImg": "/images/7-small.jpg"
+        },
+        {
+            "id": 8,
+            "title": "Rustic Wooden Bookshelf",
+            "price": 129.99,
+            "description": "Organize your books with this charming rustic wooden bookshelf.",
+            "image": "/images/8.jpg",
+            "bgImg": "/images/8-small.jpg"
+        },
+        {
+            "id": 9,
+            "title": "Contemporary Pendant Light",
+            "price": 89.99,
+            "description": "Add a touch of contemporary style with this pendant light fixture.",
+            "image": "/images/9.jpg",
+            "bgImg": "/images/9-small.jpg"
+        },
+        {
+            "id": 10,
+            "title": "Leather Recliner Sofa",
+            "price": 549.99,
+            "description": "Relax in style with this luxurious leather recliner sofa.",
+            "image": "/images/10.jpg",
+            "bgImg": "/images/10-small.jpg"
+        },
+        {
+            "id": 11,
+            "title": "Marble Coffee Table",
+            "price": 169.99,
+            "description": "Upgrade your living room with this elegant marble coffee table.",
+            "image": "/images/11.jpg",
+            "bgImg": "/images/11-small.jpg"
+        },
+        {
+            "id": 12,
+            "title": "Metallic Wall Clock",
+            "price": 39.99,
+            "description": "Keep track of time in style with this metallic wall clock.",
+            "image": "/images/12.jpg",
+            "bgImg": "/images/12-small.jpg"
+        }
+    ]
+}
