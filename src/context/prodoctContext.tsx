@@ -4,17 +4,13 @@ import React, {
     SetStateAction,
     useState,
 } from "react";
-
-interface typecard {
-    id: number;
-    amount: number;
-    size: number;
-}
+import db from "../db.json";
+import { TypePropsCardProduct } from "../types/type";
 
 type ContextType = {
-    cardProduct: typecard[];
-    addProduct: (id: number, product: typecard) => void;
-    setCardPordoct: Dispatch<SetStateAction<typecard[]>>;
+    cardProduct: TypePropsCardProduct[];
+    addProduct: (id: number) => void;
+    setCardPordoct: Dispatch<SetStateAction<TypePropsCardProduct[]>>;
 };
 
 export const ShopContext = createContext<ContextType>({
@@ -28,18 +24,17 @@ export const ProductContext = function ProductContxt({
 }: {
     children: Required<React.ReactNode>;
 }) {
-    const [cardProduct, setCardPordoct] = useState<typecard[]>([]);
+    const [cardProduct, setCardPordoct] = useState<TypePropsCardProduct[]>([]);
 
-    function addProduct(id: number, product: typecard) {
+    function addProduct(id: number) {
         const findeIndexProduct = cardProduct?.findIndex((i) => i.id === id);
 
         console.log(findeIndexProduct);
 
         if (findeIndexProduct === -1) {
-            console.log("hansan");
-            const newProduct = { ...product };
-            setCardPordoct((prev) => [...prev, newProduct]);
-        } 
+            const newProduct = db.products.find((i) => i.id === id);
+            newProduct && setCardPordoct((prev) => [...prev, newProduct]);
+        }
     }
 
     return (

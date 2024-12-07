@@ -5,11 +5,18 @@ import "../assets/sass/shop.scss";
 function Basket() {
     const { addProduct, cardProduct, setCardPordoct } = useContext(ShopContext);
 
-    useEffect(() => {
-        console.log(cardProduct);
-    }, [cardProduct]);
-
-    return <section className='content'></section>;
+    return (
+        <section className='content'>
+            {cardProduct.length > 0 &&
+                cardProduct.map((item) => (
+                    <div>
+                        {item.title}
+                        {item.description}
+                        {item.price}
+                    </div>
+                ))}
+        </section>
+    );
 }
 
 export default Basket;

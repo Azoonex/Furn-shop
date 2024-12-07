@@ -23,7 +23,7 @@
             text-align: center;
 
 
-            @include for-phone-only {
+            @include media(phone) {
                 font-size: $lg-size;
                 width: 60%;
             }

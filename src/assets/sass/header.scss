@@ -12,7 +12,7 @@
     background: rgb(252, 252, 252,.3) ;
     border-radius: 14px;
 
-    @include for-phone-only{
+    @include media(phone){
         width: 100%;
     }
 
