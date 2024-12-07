@@ -9,7 +9,9 @@ const Header = () => {
         <nav className='nav_content'>
             <Link to={"./shop"}>shop</Link>
             <Link to={"./"}>home</Link>
-            <Link to={"./bascket"}>bascket {cardProduct.length}</Link>
+            <Link to={"./bascket"}>
+                bascket {cardProduct.length > 0 && cardProduct.length}
+            </Link>
         </nav>
     );
 };

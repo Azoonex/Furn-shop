@@ -5,4 +5,6 @@ export interface TypePropsCardProduct {
     description: string;
     image: string;
     bgImg: string;
+    size? : number
 }
+
