@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ShopContext } from "../context/prodoctContext";
 import { TypePropsCardProduct } from "../types/type";
 import { Button } from "./button";
@@ -7,7 +7,6 @@ const Card: React.FC<TypePropsCardProduct> = function Card(props) {
     const { addProduct, cardProduct, setCardPordoct } = useContext(ShopContext);
 
     const { bgImg, description, id, image, price, title } = props;
-
     return (
         <article className='card'>
             <div className='img-cont'>

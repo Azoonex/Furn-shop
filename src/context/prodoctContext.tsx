@@ -5,7 +5,7 @@ import React, {
     useState,
 } from "react";
 import db from "../db.json";
-import { TypePropsCardProduct, TypeSizeProduct } from "../types/type";
+import { TypePropsCardProduct } from "../types/type";
 
 type ContextType = {
     cardProduct: TypePropsCardProduct[];
@@ -13,7 +13,8 @@ type ContextType = {
     setCardPordoct: Dispatch<SetStateAction<TypePropsCardProduct[]>>;
     removeAllProducts: () => void;
     findalPrice: number | null;
-    HnadleDecrementProduct: (id: number) => void;
+    handleIncrementProduct: (id: number) => void;
+    handleDecrement: (id: number) => void;
 };
 
 export const ShopContext = createContext<ContextType>({
@@ -22,7 +23,8 @@ export const ShopContext = createContext<ContextType>({
     setCardPordoct: () => {},
     removeAllProducts: () => {},
     findalPrice: null,
-    HnadleDecrementProduct: () => {},
+    handleIncrementProduct: () => {},
+    handleDecrement: () => {},
 });
 
 export const ProductContext = function ProductContxt({
@@ -43,17 +45,34 @@ export const ProductContext = function ProductContxt({
         }
     }
 
-    function HnadleDecrementProduct(id: number) {
-        const findeIndexProduct = cardProduct?.findIndex((i) => i.id === id);
+    function handleIncrementProduct(id: number) {
+        setCardPordoct((prev) => {
+            const index = prev.findIndex((product) => product.id === id);
 
-        if (findeIndexProduct !== -1) {
-            const productToUpdate = cardProduct.find((i) => i.id === id);
-            if (productToUpdate) {
-                productToUpdate.size! += 1;
+            if (index !== -1) {
+                const updatedProducts = [...prev]; // Create a copy of the state array
+                const productToUpdate = { ...updatedProducts[index] }; // Clone the product object
+                productToUpdate.size! += 1; // Decrement the size
+                updatedProducts[index] = productToUpdate; // Replace the updated product in the array
+                return updatedProducts; // Return the updated state
             }
 
-            setCardPordoct(productToUpdate);
-        }
+            return prev; // If the product is not found, return the previous state
+        });
+    }
+
+    function handleDecrement(id: number) {
+        const index = cardProduct.findIndex((item) => item.id === id);
+        setCardPordoct((prev) => {
+            if (index !== 1) {
+                const copyIndex = [...prev]; // all []
+                const findeItemUpadte = { ...copyIndex[index] }; //finde index
+                findeItemUpadte.size! -= 1; // change size
+                copyIndex[index] = findeItemUpadte; // replace and update
+                return copyIndex; // retrun
+            }
+            return prev;
+        });
     }
 
     // useEffect(() => {
@@ -78,7 +97,8 @@ export const ProductContext = function ProductContxt({
                 setCardPordoct,
                 removeAllProducts,
                 findalPrice,
-                HnadleDecrementProduct,
+                handleIncrementProduct,
+                handleDecrement,
             }}>
             {children}
         </ShopContext.Provider>

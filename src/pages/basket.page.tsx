@@ -8,7 +8,8 @@ function Basket() {
         cardProduct,
         findalPrice,
         removeAllProducts,
-        HnadleDecrementProduct,
+        handleIncrementProduct,
+        handleDecrement,
     } = useContext(ShopContext);
 
     useEffect(() => {
@@ -33,14 +34,20 @@ function Basket() {
                                 <h1>{item.price}</h1>
                                 <Button
                                     onClick={() =>
-                                        HnadleDecrementProduct(item.id)
+                                        handleIncrementProduct(item.id)
                                     }>
                                     +
                                 </Button>
                                 <span style={{ fontSize: "30px" }}>
                                     {item?.size}
                                 </span>
-                                <Button>-</Button>
+                                <Button
+                                    disabled={item.size === 0}
+                                    onClick={() => {
+                                        handleDecrement(item.id);
+                                    }}>
+                                    -
+                                </Button>
                             </div>
                         </div>
                     ))}
