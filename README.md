@@ -49,4 +49,4 @@ export default tseslint.config({
 })
 ```
 
-<!-- work this not increment and decrementProduct  -->
+<!-- react-ts sass - context-api -->

@@ -1,14 +1,26 @@
-import { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "../assets/sass/shop.scss";
 import { Button } from "../components/button";
 import { ShopContext } from "../context/prodoctContext";
 
 function Basket() {
-    const { cardProduct, findalPrice, removeAllProducts, handlesizeContorler } =
-        useContext(ShopContext);
+    const {
+        cardProduct,
+        findalPrice,
+        removeAllProducts,
+        handlesizeContorler,
+        setFindalPrice,
+    } = useContext(ShopContext);
 
-    useEffect(() => {
-        console.log(cardProduct);
+    React.useEffect(() => {
+        if (cardProduct.length > 0) {
+            const sumWithInitial = cardProduct.reduce(
+                (accumulator, currentValue) =>
+                    accumulator + currentValue.size! * currentValue.price,
+                0
+            );
+            setFindalPrice(() => Math.abs(sumWithInitial));
+        }
     }, [cardProduct]);
 
     return (

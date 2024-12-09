@@ -1,20 +1,6 @@
-import React, {
-    createContext,
-    Dispatch,
-    SetStateAction,
-    useState,
-} from "react";
+import React, { createContext, useState } from "react";
 import db from "../db.json";
-import { TypePropsCardProduct } from "../types/type";
-
-type ContextType = {
-    cardProduct: TypePropsCardProduct[];
-    addProduct: (id: number) => void;
-    setCardPordoct: Dispatch<SetStateAction<TypePropsCardProduct[]>>;
-    removeAllProducts: () => void;
-    findalPrice: number | null;
-    handlesizeContorler: (id: number, status: "add" | "remove") => void;
-};
+import { TypePropsCardProduct, ContextType } from "../types/type";
 
 export const ShopContext = createContext<ContextType>({
     cardProduct: [],
@@ -23,6 +9,7 @@ export const ShopContext = createContext<ContextType>({
     removeAllProducts: () => {},
     findalPrice: null,
     handlesizeContorler: () => {},
+    setFindalPrice: () => {},
 });
 
 export const ProductContext = function ProductContxt({
@@ -62,17 +49,6 @@ export const ProductContext = function ProductContxt({
         [cardProduct]
     );
 
-    React.useEffect(() => {
-        if (cardProduct.length > 0) {
-            const sumWithInitial = cardProduct.reduce(
-                (accumulator, currentValue) =>
-                    accumulator + currentValue.size! * currentValue.price,
-                0
-            );
-            setFindalPrice(() => Math.abs(sumWithInitial));
-        }
-    }, [cardProduct]);
-
     function removeAllProducts() {
         if (cardProduct.length > 0) setCardPordoct([]);
     }
@@ -86,6 +62,7 @@ export const ProductContext = function ProductContxt({
                 removeAllProducts,
                 findalPrice,
                 handlesizeContorler,
+                setFindalPrice,
             }}>
             {children}
         </ShopContext.Provider>
