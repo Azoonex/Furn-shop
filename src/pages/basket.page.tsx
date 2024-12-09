@@ -7,9 +7,9 @@ function Basket() {
     const { cardProduct, findalPrice, removeAllProducts, handlesizeContorler } =
         useContext(ShopContext);
 
-        useEffect(()=>{
-            console.log(cardProduct)
-        },[cardProduct])
+    useEffect(() => {
+        console.log(cardProduct);
+    }, [cardProduct]);
 
     return (
         <section className='content'>
@@ -51,6 +51,14 @@ function Basket() {
                 <div className='remove_content'>
                     <h1>finalPrice = {findalPrice}</h1>
                     <Button onClick={removeAllProducts}>clear product</Button>
+                </div>
+            )}
+
+            {/* empty */}
+
+            {cardProduct.length == 0 && (
+                <div className='style_box_empty'>
+                    <h1>You aren't chonse the product!</h1>
                 </div>
             )}
         </section>

@@ -59,10 +59,29 @@
     }
 }
 
-.remove_content{
+.remove_content {
     width: 100%;
     display: grid;
     place-items: center;
     margin-block: 30px;
+}
 
+.style_box_empty {
+    margin-inline: auto;
+    padding: 1.5rem;
+    display: flex;
+    background-color: $primary-color;
+
+    @include media(phone, tablet) {
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    @include media(desktop) {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: $xl-size;
+    }
 }
