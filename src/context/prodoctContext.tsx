@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import db from "../db.json";
 import { TypePropsCardProduct } from "../types/type";
+import { log } from "../helper/log";
 
 type ContextType = {
     cardProduct: TypePropsCardProduct[];
@@ -13,8 +14,7 @@ type ContextType = {
     setCardPordoct: Dispatch<SetStateAction<TypePropsCardProduct[]>>;
     removeAllProducts: () => void;
     findalPrice: number | null;
-    handleIncrementProduct: (id: number) => void;
-    handleDecrement: (id: number) => void;
+    handlesizeContorler: (id: number, status: "add" | "remove") => void;
 };
 
 export const ShopContext = createContext<ContextType>({
@@ -23,8 +23,7 @@ export const ShopContext = createContext<ContextType>({
     setCardPordoct: () => {},
     removeAllProducts: () => {},
     findalPrice: null,
-    handleIncrementProduct: () => {},
-    handleDecrement: () => {},
+    handlesizeContorler: () => {},
 });
 
 export const ProductContext = function ProductContxt({
@@ -45,45 +44,35 @@ export const ProductContext = function ProductContxt({
         }
     }
 
-    function handleIncrementProduct(id: number) {
-        setCardPordoct((prev) => {
-            const index = prev.findIndex((product) => product.id === id);
+    const handlesizeContorler = React.useCallback(
+        function handlesizeContorler(id: number, status: "add" | "remove") {
+            const index = cardProduct.findIndex((item) => item.id === id);
+            setCardPordoct((prev) => {
+                if (index !== -1) {
+                    const copyIndex = [...prev]; // all []
+                    const findeItemUpadte = { ...copyIndex[index] }; //finde index
+                    status === "add"
+                        ? (findeItemUpadte.size! += 1)
+                        : (findeItemUpadte.size! -= 1); // change size
+                    copyIndex[index] = findeItemUpadte; // replace
+                    return copyIndex; // retrun
+                }
+                return prev;
+            });
+        },
+        [cardProduct]
+    );
 
-            if (index !== -1) {
-                const updatedProducts = [...prev]; // Create a copy of the state array
-                const productToUpdate = { ...updatedProducts[index] }; // Clone the product object
-                productToUpdate.size! += 1; // Decrement the size
-                updatedProducts[index] = productToUpdate; // Replace the updated product in the array
-                return updatedProducts; // Return the updated state
-            }
-
-            return prev; // If the product is not found, return the previous state
-        });
-    }
-
-    function handleDecrement(id: number) {
-        const index = cardProduct.findIndex((item) => item.id === id);
-        setCardPordoct((prev) => {
-            if (index !== 1) {
-                const copyIndex = [...prev]; // all []
-                const findeItemUpadte = { ...copyIndex[index] }; //finde index
-                findeItemUpadte.size! -= 1; // change size
-                copyIndex[index] = findeItemUpadte; // replace and update
-                return copyIndex; // retrun
-            }
-            return prev;
-        });
-    }
-
-    // useEffect(() => {
-    //     if (sizeProduct.length > 0) {
-    //         const sumWithInitial = sizeProduct.reduce(
-    //             (accumulator, currentValue) => accumulator + currentValue.size!,
-    //             0
-    //         );
-    //         setFindalPrice(sumWithInitial);
-    //     }
-    // }, [sizeProduct]);
+    React.useEffect(() => {
+        if (cardProduct.length > 0) {
+            const sumWithInitial = cardProduct.reduce(
+                (accumulator, currentValue) =>
+                    accumulator + currentValue.size! * currentValue.price,
+                0
+            );
+            setFindalPrice(() => Math.abs(sumWithInitial));
+        }
+    }, [cardProduct]);
 
     function removeAllProducts() {
         if (cardProduct.length > 0) setCardPordoct([]);
@@ -97,8 +86,7 @@ export const ProductContext = function ProductContxt({
                 setCardPordoct,
                 removeAllProducts,
                 findalPrice,
-                handleIncrementProduct,
-                handleDecrement,
+                handlesizeContorler,
             }}>
             {children}
         </ShopContext.Provider>

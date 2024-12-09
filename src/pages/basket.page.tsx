@@ -4,24 +4,19 @@ import { Button } from "../components/button";
 import { ShopContext } from "../context/prodoctContext";
 
 function Basket() {
-    const {
-        cardProduct,
-        findalPrice,
-        removeAllProducts,
-        handleIncrementProduct,
-        handleDecrement,
-    } = useContext(ShopContext);
+    const { cardProduct, findalPrice, removeAllProducts, handlesizeContorler } =
+        useContext(ShopContext);
 
-    useEffect(() => {
-        console.log(cardProduct);
-    }, [cardProduct]);
+        useEffect(()=>{
+            console.log(cardProduct)
+        },[cardProduct])
 
     return (
         <section className='content'>
             <div className='container_card'>
                 {cardProduct.length > 0 &&
                     cardProduct.map((item) => (
-                        <div>
+                        <div key={item.id}>
                             <h1>{item.title}</h1>
                             <img src={item.image} alt={item.bgImg} />
                             <h3>{item.description}</h3>
@@ -34,7 +29,7 @@ function Basket() {
                                 <h1>{item.price}</h1>
                                 <Button
                                     onClick={() =>
-                                        handleIncrementProduct(item.id)
+                                        handlesizeContorler(item.id, "add")
                                     }>
                                     +
                                 </Button>
@@ -42,9 +37,9 @@ function Basket() {
                                     {item?.size}
                                 </span>
                                 <Button
-                                    disabled={item.size === 0}
+                                    disabled={item.size === 1}
                                     onClick={() => {
-                                        handleDecrement(item.id);
+                                        handlesizeContorler(item.id, "remove");
                                     }}>
                                     -
                                 </Button>

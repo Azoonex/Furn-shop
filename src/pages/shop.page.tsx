@@ -7,7 +7,7 @@ function Shop() {
         <section className='content'>
             <div className='container_card'>
                 {DB.products.map((i) => (
-                    <Card {...i} />
+                    <Card key={i.id} {...i} />
                 ))}
             </div>
         </section>
