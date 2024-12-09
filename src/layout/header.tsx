@@ -10,7 +10,10 @@ const Header = () => {
             <Link to={"./shop"}>shop</Link>
             <Link to={"./"}>home</Link>
             <Link to={"./bascket"}>
-                bascket {cardProduct.length > 0 && cardProduct.length}
+                bascket{" "}
+                {cardProduct.length > 0 && (
+                    <strong className=''>cardProduct.length</strong>
+                )}
             </Link>
         </nav>
     );

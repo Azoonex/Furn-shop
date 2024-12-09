@@ -22,5 +22,12 @@
         font-weight: bold;
         cursor: pointer;
         color: $dark-color;
+
+        strong{
+            background-color: $danger-color;
+            color: white;
+            padding-inline: 5px;
+            padding-block: 6px;
+        }
     }
 }

@@ -6,6 +6,8 @@ import Basket from "./pages/basket.page.tsx";
 import Shop from "./pages/shop.page.tsx";
 import Home from "./pages/home.page.tsx";
 import { ProductContext } from "./context/prodoctContext.tsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 createRoot(document.getElementById("root")!).render(
     <ProductContext>
@@ -18,5 +20,6 @@ createRoot(document.getElementById("root")!).render(
                 </Route>
             </Routes>
         </BrowserRouter>
+        <ToastContainer />
     </ProductContext>
 );
