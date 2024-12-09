@@ -49,7 +49,7 @@ function Basket() {
             </div>
             {cardProduct.length > 0 && (
                 <div className='remove_content'>
-                    <h1>finalPrice = {findalPrice}</h1>
+                    <h1>finalPrice = {findalPrice?.toFixed(5)}</h1>
                     <Button onClick={removeAllProducts}>clear product</Button>
                 </div>
             )}

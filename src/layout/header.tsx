@@ -12,7 +12,7 @@ const Header = () => {
             <Link to={"./bascket"}>
                 bascket{" "}
                 {cardProduct.length > 0 && (
-                    <strong className=''>cardProduct.length</strong>
+                    <strong className=''>{cardProduct.length}</strong>
                 )}
             </Link>
         </nav>

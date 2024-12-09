@@ -6,7 +6,6 @@ import React, {
 } from "react";
 import db from "../db.json";
 import { TypePropsCardProduct } from "../types/type";
-import { log } from "../helper/log";
 
 type ContextType = {
     cardProduct: TypePropsCardProduct[];
